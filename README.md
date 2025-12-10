@@ -30,6 +30,11 @@ California's county COVID-19 hospitalization data can be downloaded from the Cal
 
 COVID-19 variants for the U.S. and speciifc U.S. regions can be downloaded on the U.S. Centers for Disease Control and Prevention (CDC) website:<https://data.cdc.gov/Laboratory-Surveillance/SARS-CoV-2-Variant-Proportions/jr58-6ysp/about_data>
 
+
+### example_results
+This folder contains some results (figures and tables) obtained from the analysis above for both the wastewater and clincal case data that could be used for comparison.
+
+
 # Acknowledgements
 The analyses conducted through WastewaterSCAN was supported by gifts from the CDC Foundation and the Sergey Brin Family Foundation. Additional research support for Healthy Central Valley Together was provided through a philanthropic gift to the University of California, Davis.
 
