@@ -1,0 +1,46 @@
+---
+title: "covid_variants"
+author: "De'Liz Amador"
+date: "2024-12-11"
+output: html_document
+---
+
+```{r setup, include=FALSE}
+knitr::opts_chunk$set(echo = TRUE)
+```
+
+
+```{r}
+#install.packages("readxl") #to install package, name needs quotation
+library(readxl) #to read xlsx files
+library(tidyverse) #to use filtering functions (anything with a pipe)
+library(zoo)      # ordered observations which includes irregular time series.
+library(dplyr)
+library(lubridate)
+```
+
+```{r}
+variant_data <- read.csv("SARS-CoV-2_Variant_Proportions_20241210.csv")
+unique(variant_data$usa_or_hhsregion)
+```
+
+```{r}
+region9_variants <- variant_data %>%
+  filter(usa_or_hhsregion == "9",
+         as.Date(week_ending) >= as.Date("2021-10-20")
+         & as.Date(week_ending) <= as.Date("2023-10-31")) %>%
+  select(week_ending,variant, share)
+
+region9_variants
+  
+region9_dom <- region9_variants %>%
+  group_by(week_ending) %>%
+  filter(share == max(as.numeric(share))) %>%
+  ungroup()
+
+region9_dom$week_ending <- as.Date(region9_dom$week_ending)
+arrange(region9_dom, week_ending)
+
+region9_dom
+
+```
