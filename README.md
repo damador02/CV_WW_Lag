@@ -19,7 +19,7 @@ Up-to-date SARS-CoV-2 data can be downloaded from the California Department of P
 More information about the difference between Lab 1 and Lab 2 can be found here: <https://www.frontiersin.org/journals/public-health/articles/10.3389/fpubh.2023.1141097/full> 
 
 ### clinical_analysis
-**clinical_cases_ccf.Rmd** | R Markdown file that quantifies the lag of COVID-19 case data between Central Valley and Bay Area counties using the cross correlation function (ccf).
+**clinical_cases_ccf.Rmd** | R Markdown file that quantifies the lag of 7-day moving average COVID-19 case data between Central Valley and Bay Area counties using the cross correlation function (ccf). Calls for the **covid19cases_test.csv** data file.
 
 
 **covid_variants.Rmd** | R Markdown file that determines the dominant SARS-CoV-2 variant for Region 9 of the U.S. (including all of California)
@@ -41,4 +41,4 @@ The analyses conducted through WastewaterSCAN was supported by gifts from the CD
 This work and research would not be possible without our WWTP (Merced, Modesto, and Los Banos) and public health partners (Merced County Department of Public Health, Stanislaus County Department of Public Health, Yolo County Department of Public Health, and California Department of Public Health). We alsothank the staff of our commercial lab partners.
 
 # Licensing
-This repository does not have official licensing yet (tbd). 
+This repository does not have official licensing yet (tbd) due to the project still being underway
