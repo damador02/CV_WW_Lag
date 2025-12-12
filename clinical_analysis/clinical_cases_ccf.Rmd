@@ -130,17 +130,6 @@ new_county_avg <- county_avg[, c("date", "County", "cas_7")] %>%
 
 Cross-Correlation function for case data
 ```{r}
-# Compute Cross-Correlation Function (CCF)
-
-#Wave 1: 2021-10-23 to 2022-03-31 (M), 3/12 (SF), 3/18 (SM), 3/16 (SC), 3/28 (S) --> avg: ~3/21
-#Wave 2: 2022-03-22 to 2022-10-24 (M), 10/18 (SF), 10/23 (SM), 10/17 (SC), 10/7 (S) --> avg: ~10/18
-#Wave 3: 2022-10-19 to 2023-06-30
-#Wave 4: 2023-07-01 to 2023-10-28
-
-#filtering data set in waves
-#ccf_clinical <- new_clinical %>%
- # filter(date <= as.Date('2022-03-21'))
-  #filter(date >= as.Date('2022-10-19') & date <= as.Date('2023-06-30'))
 
 ccf_result <- ccf(new_county_avg$`Central Valley Average`, new_county_avg$`Bay Area Average` , lag.max = 20, plot = FALSE) #new_clinical$Stanislaus
 
@@ -251,7 +240,7 @@ p4
 
 ```
 
-For Individual Counties
+For Individual Counties - removing sub peaks
 ```{r}
  pt <- peak_table %>% 
   group_by(County)%>%
@@ -265,6 +254,7 @@ peak_date <- pt %>%
   pivot_wider(names_from = County, values_from = "date") #%>%
   #ungroup()
 
+#separating into idividual data frames
 mer <- as.data.frame(peak_date$Merced)
 colnames(mer)[1] <- "Merced"
 
@@ -280,6 +270,7 @@ colnames(SC)[1] <- "Santa Clara"
 SM <- as.data.frame(peak_date$'San Mateo')
 colnames(SM)[1] <- "San Mateo"
 
+#recombining
 CV <- cbind(mer,stan)
 BA_1 <- cbind(SF, SC)
 BA <- cbind(BA_1, SM)
@@ -294,13 +285,14 @@ colnames(new_pd)[3] <- "Santa Clara"
 colnames(new_pd)[4] <- "San Mateo"
 ```
 
-For Averaged Cases
+For Averaged Cases - removing sub peaks
 ```{r}
  pt <- peak_table %>% 
   group_by(County)%>%
   distinct(Cases, .keep_all = TRUE) %>% #only keeping date of when [peak] first occurred
   ungroup()
 
+#individual data frames
 cen_cal <- pt %>%
   filter(County == "Central Valley Average") %>%
   select(date)
@@ -311,6 +303,7 @@ bay <- pt %>%
   select(date)
 colnames(bay)[1] <- "Bay Area Average"
 
+#recombining
 combo <- cbind(cen_cal, bay)
 combo$Peaks <- 1:nrow(combo)
 combo <- combo[, c(3,1,2)]
@@ -386,50 +379,5 @@ peaks_table
 
 ```
 
-Reading in file with combined lags
-```{r}
-lag_table <- read.csv("case_lag_table.csv")
-colnames(lag_table)[1] <- "Central Valley County"
-colnames(lag_table)[2] <- "Bay Area County"
-colnames(lag_table)[3] <- "Lag (days)"
 
-```
-
-```{r}
-library(gt)
-lags <- gt(lag_table) %>% #creating table
-    cols_align(
-    align = "center",
-    columns = c("Central Valley County", "Bay Area County", "Lag (days)")
-    ) %>%
-    tab_style(
-      style = list(
-        cell_fill("#ECECEC") # fill in color for column
-      ),
-      locations = cells_body(columns = "Bay Area County") # column with color fill (center column)
-    ) %>%
-    tab_style(
-      style = cell_borders(sides = c("all"), #creating borders for each cell
-                           color = "#000000", style = "solid", weight = px(1)),
-      locations = cells_body(
-        columns = c("Central Valley County", "Bay Area County", "Lag (days)") # creating column/row borders for all columns
-      )
-    ) %>%
-    tab_style(
-      style = cell_text(align = "center"), # center aligning columns names
-      locations = cells_column_labels(columns = c("Central Valley County", "Bay Area County", "Lag (days)"))
-    ) %>%
-    tab_style(
-      style = list(cell_text(color = "#000000")), # applying black font to all columns
-      locations = cells_body(columns = c("Central Valley County", "Bay Area County", "Lag (days)"))
-    ) %>%
-    tab_header(title = md("**Table 1sd.** CCF Lag for County COVID-19 Cases")) #creating table header
-  
-  gtsave(data = lags, filename = str_c( "ccf_cases_lag_table.png"),
-         path = "ccf_cases") #, width = 8.3, units = "cm", res = 600 )
-  #NOTE: would need to convert to TIFF externally
-  
-  
-lags
-```
 
