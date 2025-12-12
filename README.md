@@ -41,4 +41,4 @@ The analyses conducted through WastewaterSCAN was supported by gifts from the CD
 This work and research would not be possible without our WWTP (Merced, Modesto, and Los Banos) and public health partners (Merced County Department of Public Health, Stanislaus County Department of Public Health, Yolo County Department of Public Health, and California Department of Public Health). We alsothank the staff of our commercial lab partners.
 
 # Licensing
-This repository does not have official licensing yet (tbd) due to the project still being underway
+This repository does not have official licensing yet (tbd) due to the project still being underway. It is expected that this repository will adopt the MIT license, but this is subject to change.
