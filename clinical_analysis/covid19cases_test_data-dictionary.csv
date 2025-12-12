@@ -1,0 +1,50 @@
+column,type,label,description
+date,text,,"Reporting time period
+
+Note: Some entries show """"None"""" in the date field.  These are records which do not have dates associated with them; however they have been included as they are necessary to arrive at the correct totals. The automated compilation of cumulative totals treats """"None"""" as the earliest date, which is why the actual earliest data in the table may have large numbers in the cumulative total columns. Users who want to graph cumulative trends should consider subtracting values for """"None"""" dates to avoid displaying this artifact in their trend lines.
+
+Values:
+Date in YYY-MM-DD format"
+area,text,,"County of Residence of Case, Test, or Death of COVID-19
+
+Value:  
+Text"
+area_type,text,,"Geographic type of the Area field.
+
+Values:  
+“State” if the Area value is “California”
+“County” for all other values"
+population,numeric,,"California Department of Finance (DOF) population estimates 2020
+
+Values:
+Positive Numeric"
+cases,text,,
+cumulative_cases,text,,
+deaths,numeric,,"Total number of confirmed COVID-19 associated deaths with date of death on the provided date. Local health departments use multiple sources to confirm that a death is COVID-associated, including speaking with physicians, reviewing medical records, and consulting with medical examiners. COVID-associated deaths are also counted in the “Cases” field. 
+
+Note: If the cause of death was determined to be unrelated to COVID-19 (e.g. homicide) for an individual with confirmed COVID-19 infection, that case is not counted in the Death count (but counted in the Cases count).
+
+Values:
+Positive Numeric"
+cumulative_deaths,numeric,,"Cumulative total of Deaths field.
+
+Values: 
+Positive Numeric"
+total_tests,numeric,,"Total number of COVID-19 molecular tests (polymerase chain reaction [PCR] tests only) performed by laboratories with specimen collection date (estimated testing date) on the provided date.
+
+Note: Not de-duplicated by individual; if an individual were tested multiple times in one day by different laboratories, it would be counted multiple times in the test column, but (if the results came back positive) only once in the case column.
+
+Values:
+Positive Numeric"
+cumulative_total_tests,numeric,,"Cumulative total of Total Tests field.
+
+Values: 
+Positive Numeric"
+positive_tests,numeric,,"Total number of positive COVID-19 molecular tests (polymerase chain reaction [PCR] tests only) with specimen collection date (estimated testing date) on the provided date.
+
+Values:
+Positive Numeric"
+cumulative_positive_tests,numeric,,"Cumulative total of Positive Tests field.
+
+Values: 
+Positive Numeric"
