@@ -1,9 +1,10 @@
 # Central-Valley_SARS-CoV-2_Wastewater_Lag
 Repository that holds code and example figures for "Urban to Rural Shifts: Quantifying the Time Lag of SARS-Cov-2 between the Bay Area and Central Valley of California through Wastewater-Based Epidemiology"
 
+  * The goal of this project is to analyze the wastewater concentrations of SARS-CoV-2 for select Bay Area and Central Valley wastewater treatment plants in order to better understand the the spatial and temporal trends of disease transmission dynamics. This project also includes an analysis of clinical COVID-19 case data.
+
 Repository DOI: [![DOI](https://zenodo.org/badge/1112100258.svg)](https://doi.org/10.5281/zenodo.17918069)
 
-  * The goal of this project is to analyze the wastewater concentrations of SARS-CoV-2 for select Bay Area and Central Valley wastewater treatment plants in order to better understand the the spatial and temporal trends of disease transmission dynamics. This project also includes an analysis of clinical COVID-19 case data.
 
 Specifically, this repository includes the following:
 
